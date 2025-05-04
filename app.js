@@ -11,7 +11,7 @@ const app = express();
 const contactContent = `
 If you have any questions or feedback, feel free to reach out to us!
 
-Email: arpitdhameliya1@gmail.com
+Email: arpitdhameliya1@
 Phone: +919624458906  
 
 We're always happy to hear from our users. Whether it's suggestions, ideas, or concerns, we're here to listen.
