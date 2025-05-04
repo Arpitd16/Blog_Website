@@ -1,5 +1,5 @@
 //jshint esversion:6
-
+require('dotenv').config();
 const express = require("express");
 const bodyParser = require("body-parser");
 const ejs = require("ejs");
@@ -24,10 +24,9 @@ app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static("public"));
 
-mongoose.connect("mongodb://127.0.0.1:27017/blogDB", { useUnifiedTopology: true }, {useNewUrlParser: true},{useFindAndModify: false},{useCreateIndex: true});
-// mongoose.connect("mongodb+srv://adm61:Arpit1234@cluster0.lv71sm5.mongodb.net/blogDB?retryWrites=true&w=majority&appName=Cluster0", { useUnifiedTopology: true }, {useNewUrlParser: true});
-
-//mongoose.connect("mongodb://localhost:27017/blogDB", { useUnifiedTopology: true }, {useNewUrlParser: true});
+mongoose.connect(process.env.MONGO_URI, { useUnifiedTopology: true, useNewUrlParser: true })
+  .then(() => console.log("Connected to MongoDB"))
+  .catch(err => console.error("MongoDB connection error:", err));
 
 const postSchema = {
   title: String,
